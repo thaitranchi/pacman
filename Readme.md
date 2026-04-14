@@ -1,66 +1,40 @@
-# PACMAN
+# ᗧ Terminal Pac-Man (MVC Edition)
 
-## Introduction
-* [This project](https://github.com/intek-training-jsc/pac-man-tcthai) aims to develop a one-level pacman game based on [the original version](https://en.wikipedia.org/wiki/Pac-Man).
-* The project is developed by waypoints, each waypoint do a specific task:
-    - [Waypoint 1: Load Pac-Man Map](https://github.com/intek-training-jsc/pac-man-tcthai/tree/waypoint1)
-    - [Waypoint 2: Simplify Pac-Man Map](https://github.com/intek-training-jsc/pac-man-tcthai/tree/waypoint2)
-    - [Waypoint 3: Convert Simplified to Human-Viewable Pac-Man Map](https://github.com/intek-training-jsc/pac-man-tcthai/tree/waypoint3)
-    - [Waypoint 4: Compress Pac-Man Map with RLE](https://github.com/intek-training-jsc/pac-man-tcthai/tree/waypoint4)
-    - [Waypoint 5: Save the Compressed Pac-Man Map](https://github.com/intek-training-jsc/pac-man-tcthai/tree/waypoint5)
-    - [Waypoint 6: Uncompress Pac-Man Map with RLE](https://github.com/intek-training-jsc/pac-man-tcthai/tree/waypoint6)
-    - [Waypoint 7: Base Class Object](https://github.com/intek-training-jsc/pac-man-tcthai/tree/waypoint7)
-    - [Waypoint 8: Object Class Hierarchy](https://github.com/intek-training-jsc/pac-man-tcthai/tree/waypoint8)
-    - [Waypoint 9: Class Map](https://github.com/intek-training-jsc/pac-man-tcthai/tree/waypoint9)
-    - [Waypoint 10: Map Grid Representation](https://github.com/intek-training-jsc/pac-man-tcthai/tree/waypoint10)
-    - [Waypoint 11: Game Level](https://github.com/intek-training-jsc/pac-man-tcthai/tree/waypoint11)
-    - [Waypoint 12: Setup Pac-Man Game Engine](https://github.com/intek-training-jsc/pac-man-tcthai/tree/waypoint12)
-    - [Waypoint 13: Color Palette](https://github.com/intek-training-jsc/pac-man-tcthai/tree/waypoint13)
-    - [Waypoint 14: Game Scene](https://github.com/intek-training-jsc/pac-man-tcthai/tree/waypoint14)
-    - [Waypoint 15: Game Loop](https://github.com/intek-training-jsc/pac-man-tcthai/tree/waypoint15)
-    - [Waypoint 16: Screen Resizing](https://github.com/intek-training-jsc/pac-man-tcthai/tree/waypoint16)
-    - [Waypoint 17: Score Update and Game End](https://github.com/intek-training-jsc/pac-man-tcthai/tree/waypoint17)
-    - [Waypoint 18: Ghosts Leaving Home and Moving Randomly](https://github.com/intek-training-jsc/pac-man-tcthai/tree/waypoint18)
-    - [Waypoint 19: Pac-Man Death](https://github.com/intek-training-jsc/pac-man-tcthai/tree/waypoint19)
-    - [Waypoint 20: Eating Power Capsule](https://github.com/intek-training-jsc/pac-man-tcthai/tree/waypoint20)
-    - [Waypoint 21: Standing Start Announcement](https://github.com/intek-training-jsc/pac-man-tcthai/tree/waypoint21)
-    - [Waypoint 22: Maze Graph](https://github.com/intek-training-jsc/pac-man-tcthai/tree/waypoint22)
-    - [Waypoint 23: Maze Weighted Graph](https://github.com/intek-training-jsc/pac-man-tcthai/tree/waypoint23)
-    - [Waypoint 24: Find Shortest Path](https://github.com/intek-training-jsc/pac-man-tcthai/tree/waypoint24)
+A professional-grade implementation of the classic Pac-Man arcade game running entirely in the terminal. This project demonstrates clean **Model-View-Controller (MVC)** architecture, custom map decompression (**RLE**), and terminal rendering using the `curses` library.
 
-## Requirement
-* The game requires python 3.8 or [later](https://www.python.org/).
+## 🚀 Features
+* **MVC Architecture:** Clean separation between game logic, rendering, and input handling.
+* **Custom Map Engine:** Supports `.rle` compressed map files and `.json` metadata for level loading.
+* **Retro Visuals:** Uses Unicode characters and `curses` color palettes to recreate the 1980s arcade feel.
+* **Ghost AI:** Independent movement logic for Blinky, Pinky, Inky, and Clyde.
 
-## Installation
-* Download from github: https://github.com/ThaiBlue/pacman.git
-* Clone from github: 
-```
-$ git clone https://github.com/ThaiBlue/pacman.git
-```
-or
-```
-$ git clone https://github.com/ThaiBlue/pacman.git
+## 📂 File Structure
+```text
+pacman
+├── main.py           # Entry point: Initializes and starts the Game Engine.
+├── controller.py     # The "Brain": Handles the game loop, input, and physics updates.
+├── model.py          # The "Data": Defines Entities (Pacman, Ghosts) and Map logic.
+├── view.py           # The "Visuals": Manages curses rendering, colors, and UI.
+├── map_utils.py      # The "Helpers": Handles RLE decompression and map prettifying.
+└── map/              # Assets: Level layouts and spawn coordinates.
 ```
 
-## Usage
-* Run the code in terminal or any python3 interpreter.
-```bash
-$ python3 game.py
-```
-* Move Pacman by pressing arrow key or 'wasd' key to eat all the dots and fruits on the map.
+## 🛠️ Installation & Setup
+1. **Clone the repository:**
+   ```bash
+   git clone https://github.com/thaitranchi/pacman.git
+   cd pacman
+   ```
+2. **Ensure Python 3.x is installed.**
+3. **Run the game:**
+   ```bash
+   python3 main.py
+   ```
+   *(Note: For Windows users, it is recommended to use `windows-curses` via `pip install windows-curses`.)*
 
-![](./pacman_score_update.gif)
-* If you get hit by a ghost, you will lose one life.
+## 🎮 Controls
+* **WASD / Arrow Keys:** Move Pac-Man
+* **Q:** Quit the game
 
-![](./pacman_dead.gif)
-* After eating power capsule, you can eat ghost to gain some bonus point. 
-
-![](./pacman_eats_ghosts.gif)
-* The game end when you press 'q' key or all the dots and bonuses gone or you lose all pacman life.
-
-![](./pacman_game_end.gif)
-
-## Author
-* Tran Chi Thai - student at INTEK institute of applied technology
-* Email: thai.tran@f4.intek.edu.vn
-* Phone: (+84) 945 577 133
+## 🧠 Devlog & Architecture
+This project was built to showcase how to transition from "scripting" to "software engineering." By separating the **Model** (data) from the **View** (graphics), the game becomes modular. For example, the `view.py` could be swapped from `curses` to `Pygame` without changing any of the core game logic in `model.py`.
